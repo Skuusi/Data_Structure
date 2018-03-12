@@ -2,49 +2,49 @@
 #include<stdlib.h>
 #include<string.h>
 
-//Ê÷µÄ¶ş²æÁ´±í±íÊ¾·½·¨
+//æ ‘çš„äºŒå‰é“¾è¡¨è¡¨ç¤ºæ–¹æ³•
 typedef struct BiNode
 {
 	int data;
 	struct BiNode *Lchild, *Rchild;
 }BiNode, *BiTree;
 
-//ÏÈĞò±éÀú
+//å…ˆåºéå†
 void preOrder(BiNode* root)
 {
 	if (root == NULL)
 	{
 		return;
 	}
-	printf("%d", root->data);//±éÀú¸ù
-	preOrder(root->Lchild);//±éÀú×ó×ÓÊ÷
-	preOrder(root->Rchild);//±éÀúÓÒ×ÓÊ÷
+	printf("%d", root->data);//éå†æ ¹
+	preOrder(root->Lchild);//éå†å·¦å­æ ‘
+	preOrder(root->Rchild);//éå†å³å­æ ‘
 }
-//ÖĞĞò±éÀú
+//ä¸­åºéå†
 void inOrder(BiNode* root)
 {
 	if (root == NULL)
 	{
 		return;
 	}
-	inOrder(root->Lchild);//±éÀú×ó×ÓÊ÷
-	printf("%d", root->data);//±éÀú¸ù
-	inOrder(root->Rchild);//±éÀúÓÒ×ÓÊ÷
+	inOrder(root->Lchild);//éå†å·¦å­æ ‘
+	printf("%d", root->data);//éå†æ ¹
+	inOrder(root->Rchild);//éå†å³å­æ ‘
 }
-//ºóĞò±éÀú
+//ååºéå†
 void postOrder(BiNode* root)
 {
 	if (root == NULL)
 	{
 		return;
 	}
-	postOrder(root->Lchild);//±éÀú×ó×ÓÊ÷
-	postOrder(root->Rchild);//±éÀúÓÒ×ÓÊ÷
-	printf("%d", root->data);//±éÀú¸ù
+	postOrder(root->Lchild);//éå†å·¦å­æ ‘
+	postOrder(root->Rchild);//éå†å³å­æ ‘
+	printf("%d", root->data);//éå†æ ¹
 }
 
-//¼ÆËãÒ¶×ÓÊı·½·¨1 //ÏÈĞò±éÀú¼ÆËã½ÚµãÊı
-int sum = 0;//¾¡Á¿²»Ê¹ÓÃÈ«¾Ö±äÁ¿
+//è®¡ç®—å¶å­æ•°æ–¹æ³•1 //å…ˆåºéå†è®¡ç®—èŠ‚ç‚¹æ•°
+int sum = 0;//å°½é‡ä¸ä½¿ç”¨å…¨å±€å˜é‡
 void countLeaf(BiNode* T)
 {
 	if (T != NULL)
@@ -63,12 +63,12 @@ void countLeaf(BiNode* T)
 		}
 	}
 }
-//¼ÆËãÒ¶×ÓÊı·½·¨2
+//è®¡ç®—å¶å­æ•°æ–¹æ³•2
 void countLeaf2(BiNode* T,int* sum)
 {
 	if (T != NULL)
 	{
-		//ÏÈĞò±éÀú¼ÆËã½ÚµãÊı
+		//å…ˆåºéå†è®¡ç®—èŠ‚ç‚¹æ•°
 		if (T->Lchild == NULL && T->Rchild == NULL)
 		{
 			(*sum)++;
@@ -84,7 +84,7 @@ void countLeaf2(BiNode* T,int* sum)
 	}
 }
 
-//ÇóÊ÷µÄ¸ß¶È
+//æ±‚æ ‘çš„é«˜åº¦
 int getDepth(BiNode* root)
 {
 	int leftDepth = 0, rightDepth = 0, depthVal = 0;
@@ -93,16 +93,16 @@ int getDepth(BiNode* root)
 		depthVal = 0;
 		return depthVal;
 	}
-	//Çó×ó×ÓÊ÷¸ß¶È
+	//æ±‚å·¦å­æ ‘é«˜åº¦
 	leftDepth = getDepth(root->Lchild);
-	//ÇóÓÒ×ÓÊ÷¸ß¶È
+	//æ±‚å³å­æ ‘é«˜åº¦
 	rightDepth = getDepth(root->Rchild);
-	//Ê÷¸ß¶È
+	//æ ‘é«˜åº¦
 	depthVal = 1 + ((leftDepth > rightDepth) ? leftDepth : rightDepth);
 	return depthVal;
 }
 
-//Ê÷µÄ¿½±´
+//æ ‘çš„æ‹·è´
 BiNode* copyTree(BiNode* root)
 {
 	BiNode* newLptr = NULL;
@@ -135,13 +135,13 @@ BiNode* copyTree(BiNode* root)
 	return newNode;
 }
 
-//#·¨´´½¨Ê÷
-//°´¸ø¶¨µÄÏÈĞòĞòÁĞ½¨Á¢¶ş²æÁ´±í
+//#æ³•åˆ›å»ºæ ‘
+//æŒ‰ç»™å®šçš„å…ˆåºåºåˆ—å»ºç«‹äºŒå‰é“¾è¡¨
 BiNode* BiTree_Creat()
 {
 	BiNode* tmp = NULL;
 	char ch;
-	printf("ÇëÊäÈëÏÈĞòĞòÁĞ£º");
+	printf("è¯·è¾“å…¥å…ˆåºåºåˆ—ï¼š");
 	scanf_s("%c", &ch);
 	if (ch = '#')
 	{
@@ -154,9 +154,9 @@ BiNode* BiTree_Creat()
 		{
 			return NULL;
 		}
-		tmp->data = ch;//Éú³É¸ù½Úµã
-		tmp->Lchild = BiTree_Creat();//¹¹½¨×ó×ÓÊ÷
-		tmp->Rchild = BiTree_Creat();//¹¹½¨ÓÒ×ÓÊ÷
+		tmp->data = ch;//ç”Ÿæˆæ ¹èŠ‚ç‚¹
+		tmp->Lchild = BiTree_Creat();//æ„å»ºå·¦å­æ ‘
+		tmp->Rchild = BiTree_Creat();//æ„å»ºå³å­æ ‘
 		return tmp;
 	}
 }
@@ -177,7 +177,7 @@ BiNode* CreateBiTree(BiNode* T)
 		node = (BiNode*)malloc(sizeof(BiNode));
 		memset(node, 0, sizeof(BiNode));
 		node->data = h;
-		//µİ¹é´´½¨×ó×ÓÊ÷
+		//é€’å½’åˆ›å»ºå·¦å­æ ‘
 		pL = CreateBiTree(T->Lchild);
 		if (pL != NULL)
 		{
@@ -187,7 +187,7 @@ BiNode* CreateBiTree(BiNode* T)
 		{
 			node->Lchild = NULL;
 		}
-		//µİ¹é´´½¨ÓÒ×ÓÊ÷
+		//é€’å½’åˆ›å»ºå³å­æ ‘
 		pR = CreateBiTree(T->Rchild);
 		if (pR != NULL)
 		{
@@ -201,6 +201,32 @@ BiNode* CreateBiTree(BiNode* T)
 	return node;
 }
 */
+
+
+//é”€æ¯æ ‘:ä½¿ç”¨ååºéå†
+void FreeTree(BiNode* T)
+{
+	if (T == NULL)
+	{
+		return;
+	}
+	if (T->Lchild != NULL)
+	{
+		FreeTree(T->Lchild);
+		T->Lchild = NULL;
+	}
+	if (T->Rchild != NULL)
+	{
+		FreeTree(T->Rchild);
+		T->Rchild = NULL;
+	}
+	if (T != NULL)
+	{
+		free(T);
+		T = NULL;
+	}
+}
+
 
 int main()
 {
@@ -221,7 +247,7 @@ int main()
 	t2.Lchild = &t4;//	t4				t5
 	t3.Rchild = &t5;
 
-	//Ê÷µÄ±éÀú
+	//æ ‘çš„éå†
 	preOrder(&t1);
 	printf("\n");
 	inOrder(&t1);
@@ -229,26 +255,26 @@ int main()
 	postOrder(&t1);
 	printf("\n");
 
-	//¼ÆËãÒ¶×ÓÊı·½·¨1
+	//è®¡ç®—å¶å­æ•°æ–¹æ³•1
 	countLeaf(&t1);
 	printf("countLeaf:%d\n", sum);
 
-	//¼ÆËãÒ¶×ÓÊı·½·¨2
+	//è®¡ç®—å¶å­æ•°æ–¹æ³•2
 	int mysum = 0;
 	countLeaf2(&t1, &mysum);
 	printf("countLeaf2:%d\n", mysum);
 
-	//ÇóÊ÷µÄ¸ß¶È
-	printf("Ê÷µÄ¸ß¶È:%d\n", getDepth(&t1));
+	//æ±‚æ ‘çš„é«˜åº¦
+	printf("æ ‘çš„é«˜åº¦:%d\n", getDepth(&t1));
 
-	//Ê÷µÄ¿½±´
+	//æ ‘çš„æ‹·è´
 	BiNode* newTree = NULL;
 	newTree = copyTree(&t1);
-	printf("Ê÷µÄ¿½±´£º\n");
+	printf("æ ‘çš„æ‹·è´ï¼š\n");
 	inOrder(newTree);
 	printf("\n");
 
-	//#·¨´´½¨Ê÷
+	//#æ³•åˆ›å»ºæ ‘
 	BiNode* tree = NULL;
 	tree = BiTree_Creat();
 	//tree = CreateBiTree(tree);
