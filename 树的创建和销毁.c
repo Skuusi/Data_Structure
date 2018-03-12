@@ -15,9 +15,8 @@ BiNode* BiTree_Creat()
 {
 	BiNode* tmp = NULL;
 	char ch;
-	printf("请输入先序序列：");
 	scanf_s("%c", &ch);
-	if (ch = '#')
+	if (ch == '#')
 	{
 		return NULL;
 	}
@@ -78,6 +77,22 @@ return node;
 */
 
 //销毁树:使用后序遍历
+void  BiTree_Free(BiNode* T)
+{
+	BiNode *tmp = NULL;
+	if (T != NULL)
+	{
+		if (T->Rchild != NULL) BiTree_Free(T->Rchild);
+		if (T->Lchild != NULL) BiTree_Free(T->Lchild);
+		if (T != NULL)
+		{
+			free(T);
+			T = NULL;
+		}
+	}
+}
+
+/*
 void FreeTree(BiNode* T)
 {
 	if (T == NULL)
@@ -100,6 +115,7 @@ void FreeTree(BiNode* T)
 		T = NULL;
 	}
 }
+*/
 
 //先序遍历
 void preOrder(BiNode* root)
@@ -108,7 +124,7 @@ void preOrder(BiNode* root)
 	{
 		return;
 	}
-	printf("%d", root->data);//遍历根
+	printf("%c", root->data);//遍历根
 	preOrder(root->Lchild);//遍历左子树
 	preOrder(root->Rchild);//遍历右子树
 }
@@ -116,11 +132,15 @@ void preOrder(BiNode* root)
 int main()
 {
 	//#法创建树
+	printf("请输入先序序列：");
 	BiNode* tree = NULL;
 	tree = BiTree_Creat();
 	//tree = CreateBiTree(tree);
 	preOrder(tree);
 	printf("\n");
+
+	BiTree_Free(tree);
+	printf("树释放完毕\n");
 
 	system("pause");
 	return 0;
