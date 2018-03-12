@@ -2,45 +2,45 @@
 #include<stdlib.h>
 #include<string.h>
 
-//Ê÷µÄ¶ş²æÁ´±í±íÊ¾·½·¨
+//æ ‘çš„äºŒå‰é“¾è¡¨è¡¨ç¤ºæ–¹æ³•
 typedef struct BiNode
 {
 	int data;
 	struct BiNode *Lchild, *Rchild;
 }BiNode, *BiTree;
 
-//ÏÈĞò±éÀú
+//å…ˆåºéå†
 void preOrder(BiNode* root)
 {
 	if (root == NULL)
 	{
 		return;
 	}
-	printf("%d", root->data);//±éÀú¸ù
-	preOrder(root->Lchild);//±éÀú×ó×ÓÊ÷
-	preOrder(root->Rchild);//±éÀúÓÒ×ÓÊ÷
+	printf("%d", root->data);//éå†æ ¹
+	preOrder(root->Lchild);//éå†å·¦å­æ ‘
+	preOrder(root->Rchild);//éå†å³å­æ ‘
 }
-//ÖĞĞò±éÀú
+//ä¸­åºéå†
 void inOrder(BiNode* root)
 {
 	if (root == NULL)
 	{
 		return;
 	}
-	inOrder(root->Lchild);//±éÀú×ó×ÓÊ÷
-	printf("%d", root->data);//±éÀú¸ù
-	inOrder(root->Rchild);//±éÀúÓÒ×ÓÊ÷
+	inOrder(root->Lchild);//éå†å·¦å­æ ‘
+	printf("%d", root->data);//éå†æ ¹
+	inOrder(root->Rchild);//éå†å³å­æ ‘
 }
-//ºóĞò±éÀú
+//ååºéå†
 void postOrder(BiNode* root)
 {
 	if (root == NULL)
 	{
 		return;
 	}
-	postOrder(root->Lchild);//±éÀú×ó×ÓÊ÷
-	postOrder(root->Rchild);//±éÀúÓÒ×ÓÊ÷
-	printf("%d", root->data);//±éÀú¸ù
+	postOrder(root->Lchild);//éå†å·¦å­æ ‘
+	postOrder(root->Rchild);//éå†å³å­æ ‘
+	printf("%d", root->data);//éå†æ ¹
 }
 
 int main()
@@ -49,6 +49,8 @@ int main()
 	memset(&t1, 0, sizeof(BiNode));
 	memset(&t2, 0, sizeof(BiNode));
 	memset(&t3, 0, sizeof(BiNode));
+	
+
 	memset(&t4, 0, sizeof(BiNode));
 	memset(&t5, 0, sizeof(BiNode));
 	t1.data = 1;
@@ -62,7 +64,7 @@ int main()
 	t2.Lchild = &t4;//	t4				t5
 	t3.Rchild = &t5;
 
-	//Ê÷µÄ±éÀú
+	//æ ‘çš„éå†
 	preOrder(&t1);
 	printf("\n");
 	inOrder(&t1);
