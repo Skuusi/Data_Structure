@@ -4,7 +4,7 @@
 #include<stack>
 using namespace std;
 
-//Ê÷µÄ¶ş²æÁ´±í±íÊ¾·½·¨
+//æ ‘çš„äºŒå‰é“¾è¡¨è¡¨ç¤ºæ–¹æ³•
 typedef struct BiNode
 {
 	int data;
@@ -24,27 +24,27 @@ BiNode* GoFarLeft(BiNode* T, stack<BiNode*> &s)
 	}
 	return T;
 }
-//ÖĞĞò±éÀú
+//ä¸­åºéå†
 void InOrder(BiNode* T)
 {
 	stack<BiNode*> s;
-	//Ò»Ö±Íù×ó×ß£¬ÕÒµ½ÖĞĞò±éÀúµÄÆğµã
+	//ä¸€ç›´å¾€å·¦èµ°ï¼Œæ‰¾åˆ°ä¸­åºéå†çš„èµ·ç‚¹
 	BiTree t = GoFarLeft(T, s);
 	while (t)
 	{
-		printf("%d ", t->data);//ÖĞĞò±éÀú´òÓ¡
+		printf("%d ", t->data);//ä¸­åºéå†æ‰“å°
 		if (t->Rchild != NULL)
 		{
-			//Èç¹ût½ÚµãÓĞÓÒ×ÓÊ÷£¬ÄÇÃ´ÖØ¸´²½Öè1
+			//å¦‚æœtèŠ‚ç‚¹æœ‰å³å­æ ‘ï¼Œé‚£ä¹ˆé‡å¤æ­¥éª¤1
 			t = GoFarLeft(t->Rchild, s);
 		}
-		//Èç¹ûtÃ»ÓĞÓÒ×ÓÊ÷£¬¸ù¾İÕ»¶¥Ö¸Ê¾£¬·ÃÎÊÕ»¶¥ÔªËØ
+		//å¦‚æœtæ²¡æœ‰å³å­æ ‘ï¼Œæ ¹æ®æ ˆé¡¶æŒ‡ç¤ºï¼Œè®¿é—®æ ˆé¡¶å…ƒç´ 
 		else if (!s.empty())
 		{
 			t = s.top();
 			s.pop();
 		}
-		//Èç¹ûtÃ»ÓĞÓÒ×ÓÊ÷£¬²¢ÇÒÕ»Îª¿Õ
+		//å¦‚æœtæ²¡æœ‰å³å­æ ‘ï¼Œå¹¶ä¸”æ ˆä¸ºç©º
 		else
 		{
 			t = NULL;
